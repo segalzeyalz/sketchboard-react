@@ -5,6 +5,7 @@ class Canvas extends Component {
       //Here is the header
     return (
       <div className="canvas">
+      Here is canvas
       </div>
     );
   }
