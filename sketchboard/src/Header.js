@@ -5,7 +5,7 @@ class Header extends Component {
       //Here is the header
     return (
       <div className="App">
-      <h1>SketchBoard</h1>
+        <h1>SketchBoard</h1>
       </div>
     );
   }
