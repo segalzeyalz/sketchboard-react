@@ -1,8 +1,8 @@
 import React, { Component } from 'react';
-
+import './style.css'
 class Buttons extends Component {
   render() {
-      //Here is the header
+      //Here is the Buttons
     return (
       <div className="buttons">
         <div className="button">Sign In</div>
