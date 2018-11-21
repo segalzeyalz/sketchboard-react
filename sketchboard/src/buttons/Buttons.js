@@ -9,7 +9,7 @@ class Buttons extends Component {
         <div className="button">Sign Up</div>
         <div className="button">Save</div>
         <div className="button">Load</div>
-        <div className="button">Color</div>
+        <div className="button"><input type="color"/></div>
         <div className="button">Picture</div>
         <div className="button">Oval</div>
         <div className="button">Triangle</div>
