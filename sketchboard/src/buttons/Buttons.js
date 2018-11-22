@@ -10,7 +10,9 @@ class Buttons extends Component {
         <div className="button">Save</div>
         <div className="button">Load</div>
         <div className="button"><input type="color"/></div>
-        <div className="button">Picture</div>
+        <div className="button">
+          <input type="file" name="avatar"accept="image/png, image/jpeg" />
+        </div>
         <div className="button">Oval</div>
         <div className="button">Triangle</div>
         <div className="button">Rectangle</div>
