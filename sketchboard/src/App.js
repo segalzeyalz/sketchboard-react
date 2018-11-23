@@ -6,12 +6,21 @@ import Canvas from './canvas/Canvas';
 import './App.css';
 
 class App extends Component {
+  constructor(props){
+    super(props);
+    this.state = {
+      shape: []
+    }
+  }
+  chooseShape(shapeName){
+    console.log(shapeName)
+  }
   render() {
     return (
       <div>
         <Header />
-        <Buttons />
-        <Canvas />
+        <Buttons chooseShape={this.chooseShape.bind(this)}/>
+        <Canvas shape={this.state.shape}/>
       </div>
     );
   }
