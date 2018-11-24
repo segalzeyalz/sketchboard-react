@@ -20,13 +20,13 @@ class Buttons extends Component {
   deleteShape(){
     let { shapes } = this.state;
     shapes.splice(shapes.length-1,1)
-    console.log(shapes)
+    this.setState({shapes})
   }
   chooseShape(name){
     let { shapes } = this.state;
-      this.setState({shapes:[...shapes, name]})
-      console.log(shapes)
+    this.setState({shapes:[...shapes, name]})
   }
+
   render() {
       //Here is the Buttons
     return (
