@@ -12,6 +12,17 @@ class App extends Component {
       shapes: [],
       selectedShapes: []
     }
+    this.generateShape = this.generateShape.bind(this)
+  }
+  generateShape(shapeName){
+    let randomColor ="abcdef123456789"
+    let randomShape ="abcdef123456789"
+    if(shapeName==="oval"){
+    } else if("Triangle"){
+  
+    }else if("Rectangle"){
+  
+    }
   }
   addShape(shapeName){
     let { shapes } = this.state;
@@ -23,7 +34,7 @@ class App extends Component {
       <div>
         <Header />
         <Buttons addShape={this.addShape.bind(this)} selectedShapes={this.state.selectedShapes}/>
-        <Canvas shape={this.state.shape}/>
+        <Canvas shape={this.state.shape} shapes={this.state.shapes}/>
       </div>
     );
   }
