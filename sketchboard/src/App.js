@@ -9,17 +9,20 @@ class App extends Component {
   constructor(props){
     super(props);
     this.state = {
-      shape: []
+      shapes: [],
+      selectedShapes: []
     }
   }
-  chooseShape(shapeName){
-    console.log(shapeName)
+  addShape(shapeName){
+    let { shapes } = this.state;
+    shapes= [...shapes, shapeName]
+    this.setState({shapes})
   }
   render() {
     return (
       <div>
         <Header />
-        <Buttons chooseShape={this.chooseShape.bind(this)}/>
+        <Buttons addShape={this.addShape.bind(this)} selectedShapes={this.state.selectedShapes}/>
         <Canvas shape={this.state.shape}/>
       </div>
     );

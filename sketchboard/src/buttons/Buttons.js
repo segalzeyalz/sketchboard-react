@@ -3,11 +3,9 @@ import './style.css'
 class Buttons extends Component {
   constructor(props){
     super(props);
-    this.props.chooseShape("Oval")
-    this.state = {
+      this.state = {
       shapes:[]
     }
-    this.chooseShape = this.chooseShape.bind(this)
     this.deleteShape = this.deleteShape.bind(this)
   }
   componentDidMount() {
@@ -22,10 +20,7 @@ class Buttons extends Component {
     shapes.splice(shapes.length-1,1)
     this.setState({shapes})
   }
-  chooseShape(name){
-    let { shapes } = this.state;
-    this.setState({shapes:[...shapes, name]})
-  }
+
 
   render() {
       //Here is the Buttons
@@ -39,9 +34,9 @@ class Buttons extends Component {
         <div className="button">
           <input type="file" name="avatar"accept="image/png, image/jpeg" /> Upload image
         </div>
-        <div className="button" onClick={()=>{this.chooseShape("Oval")}}>Oval</div>
-        <div className="button" onClick={()=>{this.chooseShape("Triangle")}}>Triangle</div>
-        <div className="button" onClick={()=>{this.chooseShape("Rectangle")}}>Rectangle</div>
+        <div className="button" onClick={()=>{this.props.addShape("Oval")}}>Oval</div>
+        <div className="button" onClick={()=>{this.props.addShape("Triangle")}}>Triangle</div>
+        <div className="button" onClick={()=>{this.props.addShape("Rectangle")}}>Rectangle</div>
         <div className="button" onClick={()=>{this.deleteShape("deleteShape")}}>delete</div>
       </div>
     );
