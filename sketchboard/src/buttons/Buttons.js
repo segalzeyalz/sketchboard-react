@@ -4,8 +4,22 @@ class Buttons extends Component {
   constructor(props){
     super(props);
     this.props.chooseShape("Oval")
+    this.state = {
+      shapes:[]
+    }
+    this.chooseShape = this.chooseShape.bind(this)
+  }
+  componentDidMount() {
+
   }
 
+  componentWillUnmount() {
+
+  }
+  chooseShape(name){
+    let { shapes } = this.state;
+      this.setState({shapes:[...shapes, name]})
+  }
   render() {
       //Here is the Buttons
     return (
@@ -18,12 +32,11 @@ class Buttons extends Component {
         <div className="button">
           <input type="file" name="avatar"accept="image/png, image/jpeg" /> Upload image
         </div>
-        <div className="button" onClick={this.props.chooseShape("Oval")}>Oval</div>
-        <div className="button" onClick={this.props.chooseShape("Triangle")}>Triangle</div>
-        <div className="button" onClick={this.props.chooseShape("Rectangle")}>Rectangle</div>
+        <div className="button" onClick={()=>{this.chooseShape("Oval")}}>Oval</div>
+        <div className="button" onClick={()=>{this.chooseShape("Triangle")}}>Triangle</div>
+        <div className="button" onClick={()=>{this.chooseShape("Rectangle")}}>Rectangle</div>
       </div>
     );
   }
 }
-
 export default Buttons;
