@@ -22,23 +22,38 @@ class App extends Component {
     }
     return color;
 }
-randomizeShape(){
-  return 5;
+randomizeShape(shapeName){
+  var width = Math.random() * 250 + 50;
+  var height = Math.random() * 250 + 50;
+  var posX = Math.round(Math.random() * 930);
+  var posY = Math.round(Math.random() * 700);
+  if(shapeName==="Rectangle"){
+    return {
+      width:width,
+      height:height,
+      posX:posX,
+      posY:posY
+    }
+  }else if("oval"){ 
+
+  } else if("Triangle"){
+
+  }
 }
   generateShape(shapeName){
-    let randomColor = this.randomizeColor()
-    console.log(randomColor)
-    let randomShape = this.randomizeShape();
-    if(shapeName==="oval"){
-    } else if("Triangle"){
-  
-    }else if("Rectangle"){
-  
+    var randomColor = this.randomizeColor()
+    var randomShape = this.randomizeShape(shapeName);
+    return {
+      shape: randomShape,
+      color: randomColor
     }
   }
   addShape(shapeName){
+    let shape = this.generateShape(shapeName);
+    console.log(shape)
     let { shapes } = this.state;
-    shapes= [...shapes, shapeName]
+    shapes= [...shapes, shape]
+    console.log(shapes)
     this.setState({shapes})
   }
   render() {
