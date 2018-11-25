@@ -28,8 +28,6 @@ class Buttons extends Component {
         <div className="button">
           <input type="file" name="avatar"accept="image/png, image/jpeg" /> Upload image
         </div>
-        <div className="button" onClick={()=>{this.props.addShape("Oval")}}>Oval</div>
-        <div className="button" onClick={()=>{this.props.addShape("Triangle")}}>Triangle</div>
         <div className="button" onClick={()=>{this.props.addShape("Rectangle")}}>Rectangle</div>
         <div className="button" onClick={()=>{this.deleteShape("deleteShape")}}>delete</div>
       </div>

@@ -13,6 +13,11 @@ class App extends Component {
       selectedShapes: []
     }
     this.generateShape = this.generateShape.bind(this)
+    this.addShape = this.addShape.bind(this)
+    this.updateSelected = this.updateSelected.bind(this)
+  }
+  updateSelected(selected){
+    this.setState({selectedShapes:selected})
   }
   randomizeColor() {
     var letters = '0123456789ABCDEF';
@@ -34,10 +39,6 @@ randomizeShape(shapeName){
       posX:posX,
       posY:posY
     }
-  }else if("oval"){ 
-
-  } else if("Triangle"){
-
   }
 }
   generateShape(shapeName){
@@ -60,8 +61,8 @@ randomizeShape(shapeName){
     return (
       <div>
         <Header />
-        <Buttons addShape={this.addShape.bind(this)} selectedShapes={this.state.selectedShapes}/>
-        <Canvas shape={this.state.shape} shapes={this.state.shapes}/>
+        <Buttons addShape={this.addShape} selectedShapes={this.state.selectedShapes}/>
+        <Canvas shapes={this.state.shapes} updateSelected = {this.updateSelected}/>
       </div>
     );
   }
