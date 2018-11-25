@@ -8,13 +8,7 @@ class Buttons extends Component {
     }
     this.deleteShape = this.deleteShape.bind(this)
   }
-  componentDidMount() {
 
-  }
-
-  componentWillUnmount() {
-
-  }
   deleteShape(){
     let { shapes } = this.state;
     shapes.splice(shapes.length-1,1)

@@ -14,9 +14,21 @@ class App extends Component {
     }
     this.generateShape = this.generateShape.bind(this)
   }
+  randomizeColor() {
+    var letters = '0123456789ABCDEF';
+    var color = '#';
+    for (let i = 0; i < 6; i++) {
+        color += letters[Math.floor(Math.random() * letters.length)];
+    }
+    return color;
+}
+randomizeShape(){
+  return 5;
+}
   generateShape(shapeName){
-    let randomColor ="abcdef123456789"
-    let randomShape ="abcdef123456789"
+    let randomColor = this.randomizeColor()
+    console.log(randomColor)
+    let randomShape = this.randomizeShape();
     if(shapeName==="oval"){
     } else if("Triangle"){
   
