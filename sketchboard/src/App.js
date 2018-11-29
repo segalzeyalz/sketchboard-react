@@ -53,6 +53,7 @@ randomizeShape(shapeName){
     let shape = this.generateShape(shapeName);
     console.log(shape)
     let { shapes } = this.state;
+    //adding shape to arreay after generating it
     shapes= [...shapes, shape]
     console.log(shapes)
     this.setState({shapes})
