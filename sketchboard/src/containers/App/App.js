@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
-import Header from './Header';
-import Buttons from './buttons/Buttons';
-import Canvas from './canvas/Canvas';
+import Header from '../../components/Header';
+import Buttons from '../../components/buttons/Buttons';
+import Canvas from './../canvas/Canvas';
 
 import './App.css';
 
