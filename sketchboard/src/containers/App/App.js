@@ -3,8 +3,6 @@ import Header from '../../components/Header';
 import Buttons from '../../components/buttons/Buttons';
 import Canvas from './../canvas/Canvas';
 
-import './App.css';
-
 class App extends Component {
   constructor(props){
     super(props);

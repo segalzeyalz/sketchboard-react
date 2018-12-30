@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import './style.css'
+import CSS from './style.css'
 class Buttons extends Component {
   constructor(props){
     super(props);
@@ -19,17 +19,14 @@ class Buttons extends Component {
   render() {
       //Here is the Buttons
     return (
-      <div className="buttons">
-        <div className="button">Sign In</div>
-        <div className="button">Sign Up</div>
-        <div className="button">Save</div>
-        <div className="button">Load</div>
-        <div className="button"><input type="color"/></div>
-        <div className="button">
-          <input type="file" name="avatar"accept="image/png, image/jpeg" /> Upload image
-        </div>
-        <div className="button" onClick={()=>{this.props.addShape("Rectangle")}}>Rectangle</div>
-        <div className="button" onClick={()=>{this.deleteShape("deleteShape")}}>delete</div>
+      <div className={CSS.buttons}>
+        <div className={CSS.button}>Sign In</div>
+        <div className={CSS.button}>Sign Up</div>
+        <div className={CSS.button}>Save</div>
+        <div className={CSS.button}>Load</div>
+        <div className={CSS.button}><input type="color"/></div>\
+        <div className={CSS.button} onClick={()=>{this.props.addShape("Rectangle")}}>Rectangle</div>
+        <div className={CSS.button} onClick={()=>{this.deleteShape("deleteShape")}}>delete</div>
       </div>
     );
   }

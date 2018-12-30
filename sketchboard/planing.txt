@@ -1,0 +1,36 @@
+Priority:
+ - Shape part - adding a shape, its functionality
+ - Load/save on local storage
+
+
+save = 1 hour
+/load - 2 hrs
+=> 3 hrs
+ 
+shape: {
+	name: 
+	... propeties:
+}
+
+shapes []
+
+Shape functionality - 6 hours
+circle - one hour 
+rectangle/square - one hour
+	functionality of shapes:
+	- resize - 1 hour
+	- change position - 1 hour
+	- delete - 30 min
+	- changing color -  30 min
+	- rotation - 3 hours
+
+behaviors: 8 hours
+ - buttons => click - one hour
+ - keyboard events:
+	- ctrl + N - make new project - 2 hours
+	- ctrl + S - save - one hour
+	- ctrl + L - loading - one hour
+	- ctrl - multiple select - one hour
+	- del - delete selectd - 30 min
+
+=> 8 + 6 + 3 = 17 hours => 8 days
