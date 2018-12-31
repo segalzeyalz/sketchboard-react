@@ -8,8 +8,8 @@ class Buttons extends Component {
       //Here is the Buttons
     return (
       <div className={CSS.buttons}>
-        <div className={CSS.button}>Save</div>
-        <div className={CSS.button}>Load</div>
+        <div className={CSS.button} onClick={this.props.onSave}>Save</div>
+        <div className={CSS.button} onClick={this.props.onLoad}>Load</div>
         <div className={CSS.button}><input type="color"/></div>
         <div className={CSS.button} onClick={()=>{this.props.onAddingRect()}}>Rectangle</div>
         <div className={CSS.button} onClick={()=>{this.props.onAddingTrian()}}>Traingle</div>
@@ -30,7 +30,9 @@ const mapDispatchToProps = dispatch => {
   return {
     onAddingRect: ()=> dispatch({type:actionTypes.ADD_RECT}),
     onAddingOval: () => dispatch({type: actionTypes.ADD_OVAL}),
-    onAddingTrian: () => dispatch({type: actionTypes.ADD_TRAINGLE})
+    onAddingTrian: () => dispatch({type: actionTypes.ADD_TRAINGLE}),
+    onSave: () => dispatch({type:actionTypes.SAVE}),
+    onLoad: () => dispatch({type:actionTypes.LOAD})
   }
 };
 export default connect(mapStateToProps, mapDispatchToProps)(Buttons);

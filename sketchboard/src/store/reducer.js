@@ -89,6 +89,18 @@ const reducer = (state = initialState, action) => {
                 ...state,
                 shapes:shapes
             }
+        case actionTypes.SAVE:
+          localStorage.setItem("b",JSON.stringify(state.shapes))
+            return {
+                ...state
+            }
+        case actionTypes.LOAD:
+            let load=JSON.parse(localStorage.getItem("b"))
+            console.log(load)
+          return {
+              ...state,
+            shapes: load
+          }
     }
         
     return state;

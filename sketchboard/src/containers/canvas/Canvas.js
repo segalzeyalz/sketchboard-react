@@ -7,30 +7,29 @@ class Canvas extends Component {
       <div className={CSS.canvas}>
         {this.props.shapes.map(function(shape){
           var style = {
-            "border":"1px solid black",
             "width":shape.width,
             "height": shape.height,
-            "background-color": shape.color,
+            "backgroundColor": shape.color,
             "top":shape.posY,
             "left":shape.posX,
             "position": "absolute"
-            
           }
           if(shape.shapeName=="Oval"){
-            style= {...style, "border-radius":shape.borderRadius}
+            style= {...style, "borderRadius":shape.borderRadius}
           }
           if(shape.shapeName=="TRAINGLE"){
             style={
               ...style,
-              "border-width":shape.borderWidth,
+              "border":"1px solid black",
+              "borderWidth":shape.borderWidth,
               "width":0,
-              "background-color": "none",              
+              "backgroundColor": "none",              
               "height": 0,
-              "border-color": `transparent transparent ${shape.color} transparent`
+              "borderColor": `transparent transparent ${shape.color} transparent`
             }
           }
           
-          return <div key={shape.posY} style = {style}></div>
+          return <div key={shape.posY + shape.posX+ shape.color} style = {style}></div>
         })}
       </div>
     );
