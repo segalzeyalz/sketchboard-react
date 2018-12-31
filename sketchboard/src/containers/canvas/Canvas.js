@@ -1,12 +1,11 @@
 import React, { Component } from 'react';
-
+import CSS from './style.css'
 class Canvas extends Component {
   render() {
       //Here is the canvas      
     return (
-      <div className="canvas">
+      <div className={CSS.canvas}>
         {this.props.shapes.map(function(shape){
-          console.log(shape.shape)
           var style = {
             "border":"1px solid black",
             "width":shape.width,
@@ -21,7 +20,7 @@ class Canvas extends Component {
             style= {...style, "border-radius":shape.borderRadius}
           }
           
-          return <div style = {style}></div>
+          return <div key={shape.posY} style = {style}></div>
         })}
       </div>
     );

@@ -10,7 +10,7 @@ class Buttons extends Component {
       <div className={CSS.buttons}>
         <div className={CSS.button}>Save</div>
         <div className={CSS.button}>Load</div>
-        <div className={CSS.button}><input type="color"/></div>\
+        <div className={CSS.button}><input type="color"/></div>
         <div className={CSS.button} onClick={()=>{this.props.onAddingRect()}}>Rectangle</div>
         <div className={CSS.button} onClick={()=>{this.props.onAddingTrian()}}>Traingle</div>
         <div className={CSS.button} onClick={()=>{this.props.onAddingOval()}}>Oval</div>

@@ -9,7 +9,7 @@ function randomizeShape(shapeName){
     var width = Math.random() * 250 + 50;
     var height = Math.random() * 250 + 50;
     var posX = Math.round(Math.random() * 930);
-    var posY = 150 + Math.round(Math.random() * 600);
+    var posY = Math.round(Math.random() * 600);
     if(shapeName==="Rectangle" || shapeName==="TRAINGLE"){
       return {
         width:width,
