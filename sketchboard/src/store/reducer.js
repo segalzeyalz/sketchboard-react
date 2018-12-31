@@ -10,7 +10,7 @@ function randomizeShape(shapeName){
     var height = Math.random() * 250 + 50;
     var posX = Math.round(Math.random() * 930);
     var posY = 150 + Math.round(Math.random() * 600);
-    if(shapeName==="Rectangle"){
+    if(shapeName==="Rectangle" || shapeName==="TRAINGLE"){
       return {
         width:width,
         height:height,
@@ -42,7 +42,7 @@ function generateShape(shapeName){
     var randomColor = randomizeColor()
     var randomShape = randomizeShape(shapeName);
     return {
-      shape: randomShape,
+      ...randomShape,
       color: randomColor
     }
 }
@@ -64,15 +64,23 @@ const reducer = (state = initialState, action) => {
                 ...state,
             }
         case actionTypes.ADD_OVAL:
-        let Oval = generateShape("Oval");
-        var currentShapes= state.shapes;
-        //adding shape to arreay after generating it
-        shapes= [...currentShapes, Oval]
-        return {
-            ...state,
-            shapes:shapes
-        }
-
+            let Oval = generateShape("Oval");
+            var currentShapes= state.shapes;
+            //adding shape to arreay after generating it
+            shapes= [...currentShapes, Oval]
+            return {
+                ...state,
+                shapes:shapes
+            }
+        case actionTypes.ADD_TRAINGLE:
+            let Trian = generateShape("TRAINGLE");
+            var currentShapes= state.shapes;
+            //adding shape to arreay after generating it
+            shapes= [...currentShapes, Trian]
+            return {
+                ...state,
+                shapes:shapes
+            }
     }
         
     return state;

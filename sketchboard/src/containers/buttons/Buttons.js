@@ -12,7 +12,7 @@ class Buttons extends Component {
         <div className={CSS.button}>Load</div>
         <div className={CSS.button}><input type="color"/></div>\
         <div className={CSS.button} onClick={()=>{this.props.onAddingRect()}}>Rectangle</div>
-        <div className={CSS.button} onClick={()=>{this.props.addShape("Traingle")}}>Traingle</div>
+        <div className={CSS.button} onClick={()=>{this.props.onAddingTrian()}}>Traingle</div>
         <div className={CSS.button} onClick={()=>{this.props.onAddingOval()}}>Oval</div>
         <div className={CSS.button} onClick={()=>{console.log("deleteShape")}}>delete</div>
       </div>
@@ -29,7 +29,8 @@ const mapStateToProps = state => {
 const mapDispatchToProps = dispatch => {
   return {
     onAddingRect: ()=> dispatch({type:actionTypes.ADD_RECT}),
-    onAddingOval: () => dispatch({type: actionTypes.ADD_OVAL})
+    onAddingOval: () => dispatch({type: actionTypes.ADD_OVAL}),
+    onAddingTrian: () => dispatch({type: actionTypes.ADD_TRAINGLE})
   }
 };
 export default connect(mapStateToProps, mapDispatchToProps)(Buttons);
