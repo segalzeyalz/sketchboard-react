@@ -8,9 +8,9 @@ const initialState = {
 function randomizeShape(shapeName){
     var width = Math.random() * 250 + 50;
     var height = Math.random() * 250 + 50;
-    var posX = Math.round(Math.random() * 930);
+    var posX = Math.round(Math.random() * 1270);
     var posY = Math.round(Math.random() * 600);
-    if(shapeName==="Rectangle" || shapeName==="TRAINGLE"){
+    if(shapeName==="Rectangle"){
       return {
         width:width,
         height:height,
@@ -19,6 +19,14 @@ function randomizeShape(shapeName){
         shapeName:shapeName
       }
     }
+    if(shapeName==="TRAINGLE"){
+        return {
+          borderWidth:`0 ${0.5*width}px ${height}px ${0.5*width}px`,
+          posX:posX,
+          posY:posY,
+          shapeName:shapeName
+        }
+      }
     if(shapeName==="Oval"){
         return {
             width:width,

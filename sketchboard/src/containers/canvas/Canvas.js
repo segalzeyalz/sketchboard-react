@@ -19,6 +19,16 @@ class Canvas extends Component {
           if(shape.shapeName=="Oval"){
             style= {...style, "border-radius":shape.borderRadius}
           }
+          if(shape.shapeName=="TRAINGLE"){
+            style={
+              ...style,
+              "border-width":shape.borderWidth,
+              "width":0,
+              "background-color": "none",              
+              "height": 0,
+              "border-color": `transparent transparent ${shape.color} transparent`
+            }
+          }
           
           return <div key={shape.posY} style = {style}></div>
         })}
