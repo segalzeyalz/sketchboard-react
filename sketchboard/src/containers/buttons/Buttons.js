@@ -31,8 +31,8 @@ const mapDispatchToProps = dispatch => {
     onAddingRect: ()=> dispatch({type:actionTypes.ADD_RECT}),
     onAddingOval: () => dispatch({type: actionTypes.ADD_OVAL}),
     onAddingTrian: () => dispatch({type: actionTypes.ADD_TRAINGLE}),
-    onSave: () => dispatch({type:actionTypes.SAVE}),
-    onLoad: () => dispatch({type:actionTypes.LOAD})
+    onSave: () => dispatch({type:actionTypes.SAVE, chosenName:"c"}),
+    onLoad: () => dispatch({type:actionTypes.LOAD, chosenName:"c"})
   }
 };
 export default connect(mapStateToProps, mapDispatchToProps)(Buttons);
