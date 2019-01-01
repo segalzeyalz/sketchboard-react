@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import * as actionTypes from './../../store/actions';
 import Header from '../../components/Header';
+import Popup from './../../components/Popup';
 import Buttons from './../buttons/Buttons';
 import Canvas from './../canvas/Canvas';
 import { connect } from 'react-redux';
@@ -10,6 +11,7 @@ class App extends Component {
     return (
       <div>
         <Header />
+        <Popup showSave={this.props.showSave} />
         <Buttons/>
         <Canvas shapes={this.props.shapes} />
       </div>
@@ -20,7 +22,8 @@ class App extends Component {
 const mapStateToProps = state => {
   return {
     shapes: state.shapes,
-    selectedShapes: state.selectedShapes
+    selectedShapes: state.selectedShapes,
+    showSave:state.showSave
   };
 };
 

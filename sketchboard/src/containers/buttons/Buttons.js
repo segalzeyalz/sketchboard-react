@@ -8,7 +8,7 @@ class Buttons extends Component {
       //Here is the Buttons
     return (
       <div className={CSS.buttons}>
-        <div className={CSS.button} onClick={this.props.onSave}>Save</div>
+        <div className={CSS.button} onClick={this.props.openSavePopup}>Save</div>
         <div className={CSS.button} onClick={this.props.onLoad}>Load</div>
         <div className={CSS.button}><input type="color"/></div>
         <div className={CSS.button} onClick={()=>{this.props.onAddingRect()}}>Rectangle</div>
@@ -31,6 +31,7 @@ const mapDispatchToProps = dispatch => {
     onAddingRect: ()=> dispatch({type:actionTypes.ADD_RECT}),
     onAddingOval: () => dispatch({type: actionTypes.ADD_OVAL}),
     onAddingTrian: () => dispatch({type: actionTypes.ADD_TRAINGLE}),
+    openSavePopup: () => dispatch({type:actionTypes.SHOW_SAVE}),
     onSave: () => dispatch({type:actionTypes.SAVE, chosenName:"c"}),
     onLoad: () => dispatch({type:actionTypes.LOAD, chosenName:"c"})
   }

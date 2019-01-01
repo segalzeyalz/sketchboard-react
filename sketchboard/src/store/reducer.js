@@ -12,7 +12,9 @@ function generateShape(shapeName){
 
 const initialState = {
     shapes:[],
-    selectedShapes:[]
+    selectedShapes:[],
+    showSave:false,
+    showLoad:false
 };
 
 const reducer = (state = initialState, action) => {
@@ -60,6 +62,22 @@ const reducer = (state = initialState, action) => {
           return {
               ...state,
             shapes: load
+          }
+        case actionTypes.SHOW_SAVE:
+          return {
+              ...state,
+              showSave: true
+          }
+        case actionTypes.SHOW_LOAD:
+          return {
+              ...state,
+              showLoad:true
+          }
+        case actionTypes.CLOSE_POPUP:
+          return {
+              ...state,
+              showLoad:false,
+              showSave:false
           }
     }
         
