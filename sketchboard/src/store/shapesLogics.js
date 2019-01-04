@@ -1,9 +1,9 @@
 const LOGICS = {
     randomizeShape: function(shapeName){
-        var width = Math.random() * 250 + 50;
-        var height = Math.random() * 250 + 50;
-        var posX = Math.round(Math.random() * 1270);
-        var posY = Math.round(Math.random() * 600);
+        let width = Math.random() * 250 + 50;
+        let height = Math.random() * 250 + 50;
+        let posX = Math.round(Math.random() * 1270);
+        let posY = Math.round(Math.random() * 600);
         if(shapeName==="Rectangle"){
           return {
             width:width,
@@ -14,8 +14,15 @@ const LOGICS = {
           }
         }
         if(shapeName==="TRAINGLE"){
+            let typesTriangle = [
+                {"type": "left","borderWidth":`${0.5*height}px ${width}px ${0.5*height}px 0`},
+                {"type": "right", "borderWidth": `${0.5*height}px 0 ${0.5*height}px ${width}px`},
+                {"type":"bottom", "borderWidth":`${height}px ${0.5*width}px  0 ${0.5*width}px`},
+                {"type":"top", "borderWidth": `0 ${0.5*width}px ${height}px ${0.5*width}px`}]
+            let randTriangle = typesTriangle[Math.floor(Math.random()*4)]
             return {
-              borderWidth:`0 ${0.5*width}px ${height}px ${0.5*width}px`,
+              borderWidth:randTriangle.borderWidth,
+              typeTriangle:randTriangle.type,
               posX:posX,
               posY:posY,
               shapeName:shapeName
