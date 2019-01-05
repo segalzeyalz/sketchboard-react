@@ -18,8 +18,13 @@ const LOGICS = {
                 {"type": "left","borderWidth":`${0.5*height}px ${width}px ${0.5*height}px 0`},
                 {"type": "right", "borderWidth": `${0.5*height}px 0 ${0.5*height}px ${width}px`},
                 {"type":"bottom", "borderWidth":`${height}px ${0.5*width}px  0 ${0.5*width}px`},
-                {"type":"top", "borderWidth": `0 ${0.5*width}px ${height}px ${0.5*width}px`}]
-            let randTriangle = typesTriangle[Math.floor(Math.random()*4)]
+                {"type":"top", "borderWidth": `0 ${0.5*width}px ${height}px ${0.5*width}px`},
+                {"type":"top-right", "borderWidth": `0 ${width}px ${width}px 0`},
+                {"type":"bottom-right", "borderWidth": `0 0 ${width}px ${width}px`},
+                {"type":"bottom-left", "borderWidth": `${width}px 0 0 ${width}px`},
+                {"type":"top-left", "borderWidth": `${width}px ${width}px 0 0`},
+            ]
+            let randTriangle = typesTriangle[Math.floor(Math.random()*8)]
             return {
               borderWidth:randTriangle.borderWidth,
               typeTriangle:randTriangle.type,
