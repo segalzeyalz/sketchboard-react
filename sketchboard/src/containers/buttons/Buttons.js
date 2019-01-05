@@ -14,7 +14,7 @@ class Buttons extends Component {
         <div className={CSS.button} onClick={()=>{this.props.onAddingRect()}}>Rectangle</div>
         <div className={CSS.button} onClick={()=>{this.props.onAddingTrian()}}>Traingle</div>
         <div className={CSS.button} onClick={()=>{this.props.onAddingOval()}}>Oval</div>
-        <div className={CSS.button} onClick={()=>{console.log("deleteShape")}}>delete</div>
+        <div className={CSS.button} onClick={()=>{this.props.onDelete()}}>Delete</div>
       </div>
     );
   }
@@ -32,6 +32,7 @@ const mapDispatchToProps = dispatch => {
     onAddingOval: () => dispatch({type: actionTypes.ADD_OVAL}),
     onAddingTrian: () => dispatch({type: actionTypes.ADD_TRAINGLE}),
     openSavePopup: () => dispatch({type:actionTypes.SHOW_SAVE}),
+    onDelete: () => dispatch({type:actionTypes.DELETE, shapesToRemove:[0,5,10]}),
     onSave: () => dispatch({type:actionTypes.SAVE, chosenName:"c"}),
     onLoad: () => dispatch({type:actionTypes.LOAD, chosenName:"c"})
   }

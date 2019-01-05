@@ -56,6 +56,18 @@ const reducer = (state = initialState, action) => {
             return {
                 ...state
             }
+        case actionTypes.DELETE:
+            let shapesToRemove = action.shapesToRemove
+            let shapesArr = [...state.shapes];
+            let i=0;
+            while(i<shapesToRemove.length && shapesToRemove[i]-i<shapesArr.length){
+                shapesArr.splice(shapesToRemove[i]-i,1)
+                ++i;
+            }
+              return {
+                  ...state,
+                  shapes: shapesArr
+              }
         case actionTypes.LOAD:
             let load=JSON.parse(localStorage.getItem(action.chosenName))
             console.log(load)

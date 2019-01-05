@@ -22,7 +22,7 @@ const LOGICS = {
                 {"type":"top-right", "borderWidth": `0 ${width}px ${width}px 0`},
                 {"type":"bottom-right", "borderWidth": `0 0 ${width}px ${width}px`},
                 {"type":"bottom-left", "borderWidth": `${width}px 0 0 ${width}px`},
-                {"type":"top-left", "borderWidth": `${width}px ${width}px 0 0`},
+                {"type":"top-left", "borderWidth": `${width}px ${width}px 0 0`}
             ]
             let randTriangle = typesTriangle[Math.floor(Math.random()*8)]
             return {
