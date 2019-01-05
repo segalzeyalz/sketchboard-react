@@ -3,6 +3,7 @@ import CSS from './style.css'
 class Canvas extends Component {
   render() {
       //Here is the canvas      
+      let {onSelect} = this.props
     return (
       <div className={CSS.canvas}>
         {this.props.shapes.map(function(shape){
@@ -29,7 +30,7 @@ class Canvas extends Component {
             }
           }
           
-          return <div key={shape.posY + shape.posX+ shape.color} style = {style}></div>
+          return <div onClick={onSelect()} key={shape.uniqueId} id={shape.uniqueId} style = {style}></div>
         })}
       </div>
     );

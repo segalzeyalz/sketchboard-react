@@ -2,11 +2,13 @@ import * as actionTypes from './actions';
 import LOGICS from './shapesLogics';
 
 function generateShape(shapeName){
-    var randomColor = LOGICS.randomizeColor()
-    var randomShape = LOGICS.randomizeShape(shapeName);
+    let randomColor = LOGICS.randomizeColor()
+    let randomShape = LOGICS.randomizeShape(shapeName);
+    let uniqueId =  shapeName + randomColor + Math.floor(Math.random()*1000)
     return {
       ...randomShape,
-      color: randomColor
+      color: randomColor,
+      uniqueId:uniqueId
     }
 }
 
@@ -90,6 +92,11 @@ const reducer = (state = initialState, action) => {
               ...state,
               showLoad:false,
               showSave:false
+          }
+        case actionTypes.SELECT:
+            console.log("selected")
+          return {
+              ...state
           }
     }
         
