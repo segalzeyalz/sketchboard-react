@@ -13,7 +13,7 @@ class App extends Component {
         <Header />
         <Popup showSave={this.props.showSave} showLoad={this.props.showLoad}/>
         <Buttons/>
-        <Canvas shapes={this.props.shapes} onSeelct = {this.props.onSelect}/>
+        <Canvas shapes={this.props.shapes} onSelect = {this.props.onSelect}/>
       </div>
     );
   }
