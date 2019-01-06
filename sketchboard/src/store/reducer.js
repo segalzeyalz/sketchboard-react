@@ -114,27 +114,38 @@ const reducer = (state = initialState, action) => {
           }
       case actionTypes.SELECT:
         let { selectedShapes } = state;
-        if(action.ctrlCliked){
-            let idxSelected = selectedShapes.findIndex((elem)=>elem==action.id)
-            if(idxSelected>0){
-                selectedShapes.splice(idxSelected,1)
-            }else{
-                selectedShapes=[...selectedShapes, action.id]
-            }
+        let idxSelected = selectedShapes.findIndex((elem)=>elem==action.id)
+        if(idxSelected>-1){
+            selectedShapes.splice(idxSelected,1)
+        } else if(action.ctrlCliked){
+            selectedShapes=[...selectedShapes, action.id]
         }else{
             selectedShapes = [action.id]
         }
+        //IF EXIST - DELETE FROM ARRAY
             return {
                 ...state,
                 selectedShapes:selectedShapes
             }
-        case actionTypes.CLOSE_POPUP:
+        case actionTypes.CLOSE_POPUP: 
           return {
               ...state,
               showLoad:false,
               showSave:false
           }
-        
+        case actionTypes.CHANGE_COLOR:
+            let shapesToChangeColor = state.selectedShapes;
+            let arrayOfShapes = [...state.shapes];
+            console.log(action.color)
+            for(var i=0; i<shapesToChangeColor.length; i++){
+                let idxSelected = arrayOfShapes.findIndex((elem)=>elem.uniqueId==shapesToChangeColor[i])
+                arrayOfShapes[idxSelected].color = action.color
+            }
+            console.log(arrayOfShapes)
+          return {
+              ...state,
+              shapes: arrayOfShapes
+          }
     }
         
     return state;

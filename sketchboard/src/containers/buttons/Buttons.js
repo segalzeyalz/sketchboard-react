@@ -10,7 +10,7 @@ class Buttons extends Component {
       <div className={CSS.buttons}>
         <div className={CSS.button} onClick={this.props.openSavePopup}>Save</div>
         <div className={CSS.button} onClick={this.props.openLoadPopup}>Load</div>
-        <div className={CSS.button}><input type="color"/></div>
+        <div className={CSS.button}><input onChange={(event)=>{this.props.onColorChange(event.target.value)}} type="color"/></div>
         <div className={CSS.button} onClick={()=>{this.props.onAddingRect()}}>Rectangle</div>
         <div className={CSS.button} onClick={()=>{this.props.onAddingTrian()}}>Traingle</div>
         <div className={CSS.button} onClick={()=>{this.props.onAddingOval()}}>Oval</div>
@@ -34,7 +34,8 @@ const mapDispatchToProps = dispatch => {
     openSavePopup: () => dispatch({type:actionTypes.SHOW_SAVE}),
     openLoadPopup: () => dispatch({type:actionTypes.SHOW_LOAD}),
     onLoad: () =>dispatch({type:actionTypes.LOAD, chosenName:"b"}),
-    onDelete: () => dispatch({type:actionTypes.DELETE})
+    onDelete: () => dispatch({type:actionTypes.DELETE}),
+    onColorChange: (color)=>dispatch({type:actionTypes.CHANGE_COLOR, color:color})
   }
 };
 export default connect(mapStateToProps, mapDispatchToProps)(Buttons);
