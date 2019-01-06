@@ -32,7 +32,11 @@ class Canvas extends Component {
             }
           }
           
-          return <div onClick={(e)=>{onSelect(shape.uniqueId, e); console.log(e.clientX)}} key={shape.uniqueId} id={shape.uniqueId} style = {style}></div>
+          return <div 
+                    onClick={(e)=>{onSelect(shape.uniqueId, e);}}
+                    onMouseDown={(e)=>{console.log(e.clientX, e.clientY, e.target.style.left, e.target.style.top)}}
+                    key={shape.uniqueId} id={shape.uniqueId} style = {style}>
+                  </div>
         })}
       </div>
     );
