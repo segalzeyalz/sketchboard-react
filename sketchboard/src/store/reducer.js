@@ -62,12 +62,12 @@ const reducer = (state = initialState, action) => {
             
             localStorage.setItem("savedShapes",JSON.stringify(savedShapes))
             return {
-                ...state
+                ...state,
+                showSave:false
             }
             case actionTypes.LOAD:
                 let load=JSON.parse(localStorage.getItem("savedShapes"))
                 let loadOptions = Object.keys(load)
-                console.log(action.chosenName)
                 var shapes;
                 for(var i=0; i<loadOptions.length; i++){
                     if(loadOptions[i]===state.savedName){
@@ -111,7 +111,7 @@ const reducer = (state = initialState, action) => {
               showLoad:true,
               loadOptions:loadOptions
           }
-      case actionTypes.SELECTED:
+      case actionTypes.SELECT:
             return {
                 ...state
             }

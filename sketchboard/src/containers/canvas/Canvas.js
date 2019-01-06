@@ -50,6 +50,6 @@ const mapStateToProps = state => {
 
 const mapDispatchToProps = dispatch => {
   return {
-    onSelect: () =>dispatch({type: actionTypes.SELECTED})  }
+    onSelect: (id) =>dispatch({type: actionTypes.SELECT, id:id})  }
 };
 export default connect(mapStateToProps, mapDispatchToProps)(Canvas);
