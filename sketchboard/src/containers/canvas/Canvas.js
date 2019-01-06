@@ -4,7 +4,6 @@ import CSS from './style.css'
 import { connect } from 'react-redux';
 class Canvas extends Component {
   render() {
-    console.log(this.props.shapes)
       //Here is the canvas      
      let { onSelect} = this.props  
     return (

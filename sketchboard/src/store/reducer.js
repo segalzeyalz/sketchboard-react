@@ -15,9 +15,11 @@ function generateShape(shapeName){
 const initialState = {
     shapes:[],
     selectedShapes:[],
-    // loadOptions:[],
+    loadOptions:[],
     showSave:false,
-    showLoad:false
+    showLoad:false,
+    savedName:'',
+    selected: ''
 };
 
 const reducer = (state = initialState, action) => {
@@ -55,8 +57,8 @@ const reducer = (state = initialState, action) => {
             if(!savedShapes) {
                 savedShapes = {};
             }
-            let chosenName = action.chosenName
-            savedShapes[action.chosenName]  = JSON.stringify(state.shapes)
+            
+            savedShapes[state.savedName]  = JSON.stringify(state.shapes)
             
             localStorage.setItem("savedShapes",JSON.stringify(savedShapes))
             return {
@@ -65,17 +67,25 @@ const reducer = (state = initialState, action) => {
             case actionTypes.LOAD:
                 let load=JSON.parse(localStorage.getItem("savedShapes"))
                 let loadOptions = Object.keys(load)
+                console.log(action.chosenName)
                 var shapes;
                 for(var i=0; i<loadOptions.length; i++){
-                    if(loadOptions[i]===action.chosenName){
-                        shapes = JSON.parse(load[action.chosenName])
+                    if(loadOptions[i]===state.savedName){
+                        shapes = JSON.parse(load[state.savedName])
                     }
                 }
               return {
                   ...state,
                   shapes:shapes,
+                  showLoad:false,
                   loadOptions:loadOptions
               }
+            case actionTypes.UPDATE_SAVE_NAME:
+            console.log(action.chosenName)
+            return {
+                ...state,
+                savedName:action.chosenName
+            }
         case actionTypes.DELETE:
             let shapesToRemove = action.shapesToRemove
             let shapesArr = [...state.shapes];
@@ -94,9 +104,12 @@ const reducer = (state = initialState, action) => {
               showSave: true
           }
         case actionTypes.SHOW_LOAD:
+        var load=JSON.parse(localStorage.getItem("savedShapes"))
+        var loadOptions = Object.keys(load)
           return {
               ...state,
-              showLoad:true
+              showLoad:true,
+              loadOptions:loadOptions
           }
       case actionTypes.SELECTED:
             return {
