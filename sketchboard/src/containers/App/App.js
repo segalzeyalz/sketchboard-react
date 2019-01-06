@@ -9,7 +9,7 @@ import { connect } from 'react-redux';
 class App extends Component {
   render() {
     return (
-      <div>
+      <div onKeyPress={()=>console.log("adfzcsd")}>
         <Header />
         <Popup showSave={this.props.showSave} showLoad={this.props.showLoad}/>
         <Buttons/>
@@ -31,6 +31,7 @@ const mapStateToProps = state => {
 
 const mapDispatchToProps = dispatch => {
   return {
+    onDelete: () => dispatch({type:actionTypes.DELETE})
   }
 };
 export default connect(mapStateToProps, mapDispatchToProps)(App);

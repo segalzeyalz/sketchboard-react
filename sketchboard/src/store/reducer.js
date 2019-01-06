@@ -81,7 +81,6 @@ const reducer = (state = initialState, action) => {
                   loadOptions:loadOptions
               }
             case actionTypes.UPDATE_SAVE_NAME:
-            console.log(action.chosenName)
             return {
                 ...state,
                 savedName:action.chosenName
@@ -136,12 +135,10 @@ const reducer = (state = initialState, action) => {
         case actionTypes.CHANGE_COLOR:
             let shapesToChangeColor = state.selectedShapes;
             let arrayOfShapes = [...state.shapes];
-            console.log(action.color)
             for(var i=0; i<shapesToChangeColor.length; i++){
                 let idxSelected = arrayOfShapes.findIndex((elem)=>elem.uniqueId==shapesToChangeColor[i])
                 arrayOfShapes[idxSelected].color = action.color
             }
-            console.log(arrayOfShapes)
           return {
               ...state,
               shapes: arrayOfShapes
