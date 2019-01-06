@@ -19,7 +19,7 @@ const initialState = {
     showSave:false,
     showLoad:false,
     savedName:'',
-    selected: ''
+    color:''
 };
 
 const reducer = (state = initialState, action) => {
