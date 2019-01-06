@@ -87,16 +87,17 @@ const reducer = (state = initialState, action) => {
                 savedName:action.chosenName
             }
         case actionTypes.DELETE:
-            let shapesToRemove = action.shapesToRemove
+            let shapesToRemove = state.selectedShapes;
             let shapesArr = [...state.shapes];
-            let i=0;
-            while(i<shapesToRemove.length && shapesToRemove[i]-i<shapesArr.length){
-                shapesArr.splice(shapesToRemove[i]-i,1)
-                ++i;
+            // Delte all the shapes to remove
+            for(var i=0; i<shapesToRemove.length; i++){
+                let idxSelected = shapesArr.findIndex((elem)=>elem.uniqueId==shapesToRemove[i])
+                shapesArr.splice(idxSelected,1)
             }
               return {
                   ...state,
-                  shapes: shapesArr
+                  shapes: shapesArr,
+                  selectedShapes: []
               }
         case actionTypes.SHOW_SAVE:
           return {
@@ -112,8 +113,20 @@ const reducer = (state = initialState, action) => {
               loadOptions:loadOptions
           }
       case actionTypes.SELECT:
+        let { selectedShapes } = state;
+        if(action.ctrlCliked){
+            let idxSelected = selectedShapes.findIndex((elem)=>elem==action.id)
+            if(idxSelected>0){
+                selectedShapes.splice(idxSelected,1)
+            }else{
+                selectedShapes=[...selectedShapes, action.id]
+            }
+        }else{
+            selectedShapes = [action.id]
+        }
             return {
-                ...state
+                ...state,
+                selectedShapes:selectedShapes
             }
         case actionTypes.CLOSE_POPUP:
           return {

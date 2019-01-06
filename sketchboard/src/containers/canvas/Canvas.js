@@ -32,7 +32,7 @@ class Canvas extends Component {
             }
           }
           
-          return <div onClick={()=>onSelect()} key={shape.uniqueId} id={shape.uniqueId} style = {style}></div>
+          return <div onClick={()=>onSelect(shape.uniqueId, false)} key={shape.uniqueId} id={shape.uniqueId} style = {style}></div>
         })}
       </div>
     );
@@ -50,6 +50,6 @@ const mapStateToProps = state => {
 
 const mapDispatchToProps = dispatch => {
   return {
-    onSelect: (id) =>dispatch({type: actionTypes.SELECT, id:id})  }
+    onSelect: (id, ctrlCliked) =>dispatch({type: actionTypes.SELECT, id:id, ctrlCliked:ctrlCliked})}
 };
 export default connect(mapStateToProps, mapDispatchToProps)(Canvas);

@@ -34,7 +34,7 @@ const mapDispatchToProps = dispatch => {
     openSavePopup: () => dispatch({type:actionTypes.SHOW_SAVE}),
     openLoadPopup: () => dispatch({type:actionTypes.SHOW_LOAD}),
     onLoad: () =>dispatch({type:actionTypes.LOAD, chosenName:"b"}),
-    onDelete: () => dispatch({type:actionTypes.DELETE, shapesToRemove:[0,5,10]})
+    onDelete: () => dispatch({type:actionTypes.DELETE})
   }
 };
 export default connect(mapStateToProps, mapDispatchToProps)(Buttons);
