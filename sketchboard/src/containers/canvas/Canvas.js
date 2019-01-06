@@ -1,10 +1,12 @@
 import React, { Component } from 'react';
+import * as actionTypes from './../../store/actions';
 import CSS from './style.css'
+import { connect } from 'react-redux';
 class Canvas extends Component {
   render() {
+    console.log(this.props.shapes)
       //Here is the canvas      
-      var onSelect = this.props.onSelect
-      console.log(this.props.onSelect)
+     let { onSelect} = this.props  
     return (
       <div className={CSS.canvas}>
         {this.props.shapes.map(function(shape){
@@ -31,11 +33,24 @@ class Canvas extends Component {
             }
           }
           
-          return <div onClick={()=>console.log(onSelect)} key={shape.uniqueId} id={shape.uniqueId} style = {style}></div>
+          return <div onClick={()=>onSelect()} key={shape.uniqueId} id={shape.uniqueId} style = {style}></div>
         })}
       </div>
     );
   }
 }
 
-export default Canvas;
+const mapStateToProps = state => {
+  return {
+    shapes: state.shapes,
+    selectedShapes: state.selectedShapes,
+    showSave:state.showSave,
+    showLoad:state.showLoad
+  };
+};
+
+const mapDispatchToProps = dispatch => {
+  return {
+    onSelect: () =>dispatch({type: actionTypes.SELECTED})  }
+};
+export default connect(mapStateToProps, mapDispatchToProps)(Canvas);

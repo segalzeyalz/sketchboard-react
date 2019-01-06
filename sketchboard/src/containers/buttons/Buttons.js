@@ -9,7 +9,7 @@ class Buttons extends Component {
     return (
       <div className={CSS.buttons}>
         <div className={CSS.button} onClick={this.props.openSavePopup}>Save</div>
-        <div className={CSS.button} onClick={this.props.onLoad}>Load</div>
+        <div className={CSS.button} onClick={this.props.openLoadPopup}>Load</div>
         <div className={CSS.button}><input type="color"/></div>
         <div className={CSS.button} onClick={()=>{this.props.onAddingRect()}}>Rectangle</div>
         <div className={CSS.button} onClick={()=>{this.props.onAddingTrian()}}>Traingle</div>
@@ -32,9 +32,9 @@ const mapDispatchToProps = dispatch => {
     onAddingOval: () => dispatch({type: actionTypes.ADD_OVAL}),
     onAddingTrian: () => dispatch({type: actionTypes.ADD_TRAINGLE}),
     openSavePopup: () => dispatch({type:actionTypes.SHOW_SAVE}),
-    onDelete: () => dispatch({type:actionTypes.DELETE, shapesToRemove:[0,5,10]}),
-    onSave: () => dispatch({type:actionTypes.SAVE, chosenName:"c"}),
-    onLoad: () => dispatch({type:actionTypes.LOAD, chosenName:"c"})
+    openLoadPopup: () => dispatch({type:actionTypes.SHOW_LOAD}),
+    onLoad: () =>dispatch({type:actionTypes.LOAD, chosenName:"b"}),
+    onDelete: () => dispatch({type:actionTypes.DELETE, shapesToRemove:[0,5,10]})
   }
 };
 export default connect(mapStateToProps, mapDispatchToProps)(Buttons);

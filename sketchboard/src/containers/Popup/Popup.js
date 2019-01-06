@@ -11,6 +11,7 @@ class Popup extends Component {
                                 <h1>Save</h1>
                                 <input type="text"/>
                                <button onClick={this.props.closePopup}>close me</button>
+                               <button onClick={this.props.onSave}>Save</button>
                             </div>
                        </div>)
             }else if(this.props.showLoad){
@@ -35,7 +36,8 @@ class Popup extends Component {
       
       const mapDispatchToProps = dispatch => {
         return {
-            closePopup: ()=> dispatch({type: actionTypes.CLOSE_POPUP}) 
+            closePopup: ()=> dispatch({type: actionTypes.CLOSE_POPUP}),
+            onSave: () =>dispatch({type:actionTypes.SAVE, chosenName:"b"})
         }
     }
 export default connect(mapStateToProps, mapDispatchToProps)(Popup);

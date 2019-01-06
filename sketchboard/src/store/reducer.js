@@ -15,6 +15,7 @@ function generateShape(shapeName){
 const initialState = {
     shapes:[],
     selectedShapes:[],
+    // loadOptions:[],
     showSave:false,
     showLoad:false
 };
@@ -29,11 +30,6 @@ const reducer = (state = initialState, action) => {
             return {
                 ...state,
                 shapes:shapes
-            }
-        case actionTypes.SELECT:
-            
-            return {
-                ...state,
             }
         case actionTypes.ADD_OVAL:
             let Oval = generateShape("Oval");
@@ -54,10 +50,32 @@ const reducer = (state = initialState, action) => {
                 shapes:shapes
             }
         case actionTypes.SAVE:
-          localStorage.setItem(action.chosenName,JSON.stringify(state.shapes))
+            let savedShapes = {};
+            savedShapes = JSON.parse(localStorage.getItem("savedShapes"))
+            if(!savedShapes) {
+                savedShapes = {};
+            }
+            let chosenName = action.chosenName
+            savedShapes[action.chosenName]  = JSON.stringify(state.shapes)
+            
+            localStorage.setItem("savedShapes",JSON.stringify(savedShapes))
             return {
                 ...state
             }
+            case actionTypes.LOAD:
+                let load=JSON.parse(localStorage.getItem("savedShapes"))
+                let loadOptions = Object.keys(load)
+                var shapes;
+                for(var i=0; i<loadOptions.length; i++){
+                    if(loadOptions[i]===action.chosenName){
+                        shapes = JSON.parse(load[action.chosenName])
+                    }
+                }
+              return {
+                  ...state,
+                  shapes:shapes,
+                  loadOptions:loadOptions
+              }
         case actionTypes.DELETE:
             let shapesToRemove = action.shapesToRemove
             let shapesArr = [...state.shapes];
@@ -70,13 +88,6 @@ const reducer = (state = initialState, action) => {
                   ...state,
                   shapes: shapesArr
               }
-        case actionTypes.LOAD:
-            let load=JSON.parse(localStorage.getItem(action.chosenName))
-            console.log(load)
-          return {
-              ...state,
-            shapes: load
-          }
         case actionTypes.SHOW_SAVE:
           return {
               ...state,
@@ -87,17 +98,17 @@ const reducer = (state = initialState, action) => {
               ...state,
               showLoad:true
           }
+      case actionTypes.SELECTED:
+            return {
+                ...state
+            }
         case actionTypes.CLOSE_POPUP:
           return {
               ...state,
               showLoad:false,
               showSave:false
           }
-        case actionTypes.SELECT:
-            console.log("selected")
-          return {
-              ...state
-          }
+        
     }
         
     return state;

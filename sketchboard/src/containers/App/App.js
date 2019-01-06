@@ -13,7 +13,7 @@ class App extends Component {
         <Header />
         <Popup showSave={this.props.showSave} showLoad={this.props.showLoad}/>
         <Buttons/>
-        <Canvas shapes={this.props.shapes} onSelect = {this.props.onSelect}/>
+        <Canvas/>
       </div>
     );
   }
@@ -25,12 +25,12 @@ const mapStateToProps = state => {
     selectedShapes: state.selectedShapes,
     showSave:state.showSave,
     showLoad:state.showLoad
+    
   };
 };
 
 const mapDispatchToProps = dispatch => {
   return {
-    onSelect: dispatch({type: actionTypes.SELECT})
   }
 };
 export default connect(mapStateToProps, mapDispatchToProps)(App);

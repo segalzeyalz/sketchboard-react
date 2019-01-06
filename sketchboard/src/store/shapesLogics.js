@@ -20,7 +20,7 @@ const LOGICS = {
                 {"type":"bottom", "borderWidth":`${height}px ${0.5*width}px  0 ${0.5*width}px`},
                 {"type":"top", "borderWidth": `0 ${0.5*width}px ${height}px ${0.5*width}px`},
                 {"type":"top-right", "borderWidth": `0 ${width}px ${width}px 0`},
-                {"type":"bottom-right", "borderWidth": `0 0 ${width}px ${width}px`}
+                {"type":"bottom-right", "borderWidth": `0 0 ${width}px ${width}px`},
             ]
             let randTriangle = typesTriangle[Math.floor(Math.random()*6)]
             return {
