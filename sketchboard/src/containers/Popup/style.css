@@ -9,6 +9,7 @@
     margin: auto;
     background-color: rgba(0,0,0, 0.5);
     z-index:100;
+    font-family: roboto;
 }
 
 :local(.Inner_popup){
