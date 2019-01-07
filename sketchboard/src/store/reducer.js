@@ -155,10 +155,10 @@ const reducer = (state = initialState, action) => {
           return {
               ...state,
               selectedPos:{
-                startX: parseInt(startX),
-                startY:parseInt(startY),
-                offsetX:parseInt(offsetX),
-                offsetY:parseInt(offsetY),
+                startX: parseFloat(startX),
+                startY:parseFloat(startY),
+                offsetX:parseFloat(offsetX),
+                offsetY:parseFloat(offsetY),
                 dragElement:id
               }
           }
@@ -168,8 +168,8 @@ const reducer = (state = initialState, action) => {
           let shapesChange = state.shapes;
           let dragElementIdx = shapesChange.findIndex((elem)=>elem.uniqueId==dragElement)
           if(dragElementIdx>-1){
-              shapesChange[dragElementIdx].posX = parseInt(selectedPos.offsetX + action.clientX - selectedPos.startX)
-              shapesChange[dragElementIdx].posY = parseInt(selectedPos.offsetY + action.clientY - selectedPos.startY)}
+              shapesChange[dragElementIdx].posX = parseFloat(selectedPos.offsetX + action.clientX - selectedPos.startX)
+              shapesChange[dragElementIdx].posY = parseFloat(selectedPos.offsetY + action.clientY - selectedPos.startY)}
               return {
               ...state,
               shapes: shapesChange,
@@ -177,6 +177,17 @@ const reducer = (state = initialState, action) => {
                   ...selectedPos,
                   offsetX: (shapesChange[dragElementIdx] && shapesChange[dragElementIdx].posX) || selectedPos.offsetX,
                   offsetY: (shapesChange[dragElementIdx] && shapesChange[dragElementIdx].posY) || selectedPos.offsetY,
+            }
+          }
+        case actionTypes.STOP_CHANGE_POSITION:
+          return {
+              ...state,
+              selectedPos:{
+                startX: 0,
+                startY:0,
+                offsetX:0,
+                offsetY:0,
+                dragElement:''
             }
           }
     }

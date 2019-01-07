@@ -5,7 +5,8 @@ import { connect } from 'react-redux';
 class Canvas extends Component {
   render() {
       //Here is the canvas      
-     let { onSelect, onMouseDown, onMouseMove} = this.props  
+     let { onSelect, onMouseDown, onMouseMove} = this.props
+     console.log(this.props.selectedPos)
     return (
       <div className={CSS.canvas}>
         {this.props.shapes.map(function(shape){
@@ -13,8 +14,8 @@ class Canvas extends Component {
             "width":shape.width,
             "height": shape.height,
             "backgroundColor": shape.color,
-            "top":shape.posY,
             "left":shape.posX,
+            "top":shape.posY,
             "position": "absolute"
           }
           if(shape.shapeName=="Oval"){
@@ -36,8 +37,9 @@ class Canvas extends Component {
                     onClick={(e)=>{onSelect(shape.uniqueId, e);}}
                     onMouseDown={(e)=>{onMouseDown(shape.uniqueId, e)}}
                     onMouseMove ={(e)=>{onMouseMove(shape.uniqueId,e)}}
-                    key={shape.uniqueId} id={shape.uniqueId} style = {style}>
-                  </div>
+                    onMouseUp={(e)=>console.log("mouseLeave")}
+                    key={shape.uniqueId} id={shape.uniqueId} style = {style}  
+                  />
         })}
       </div>
     );
@@ -49,7 +51,8 @@ const mapStateToProps = state => {
     shapes: state.shapes,
     selectedShapes: state.selectedShapes,
     showSave:state.showSave,
-    showLoad:state.showLoad
+    showLoad:state.showLoad,
+    selectedPos:state.selectedPos
   };
 };
 
@@ -57,7 +60,8 @@ const mapDispatchToProps = dispatch => {
   return {
     onSelect: (id, event) =>dispatch({type: actionTypes.SELECT, id:id, ctrlCliked:event.ctrlKey}),
     onMouseDown: (id, e)=>dispatch({type:actionTypes.UPDATE_OFFSET, id:id, startX:e.clientX, startY:e.clientY, offsetX:e.target.style.left, offsetY:e.target.style.top}),
-    onMouseMove: (id, e) =>dispatch({type:actionTypes.CHANGE_POSITION, clientX:e.clientX, clientY:e.clientY})
+    onMouseMove: (id, e) =>dispatch({type:actionTypes.CHANGE_POSITION, clientX:e.clientX, clientY:e.clientY}),
+    onMouseUp: ()=>dispatch({type:actionTypes.STOP_CHANGE_POSITION})
   }
 };
 export default connect(mapStateToProps, mapDispatchToProps)(Canvas);

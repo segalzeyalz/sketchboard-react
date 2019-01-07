@@ -12,5 +12,6 @@ export const DELETE = 'DELETE';
 export const CHANGE_COLOR = 'CHANGE_COLOR';
 export const UPDATE_OFFSET = 'UPDATE_OFFSET';
 export const CHANGE_POSITION = 'CHANGE_POSITION';
+export const STOP_CHANGE_POSITION = 'STOP_CHANGE_POSITION';
 export const RESIZE = 'RESIZE';
 
