@@ -19,7 +19,14 @@ const initialState = {
     showSave:false,
     showLoad:false,
     savedName:'',
-    color:''
+    color:'',
+    selectedPos:{
+        startX: 0,
+        startY:0,
+        offsetX:0,
+        offsetY:0,
+        dragElement:''
+    }
 };
 
 const reducer = (state = initialState, action) => {
@@ -142,6 +149,35 @@ const reducer = (state = initialState, action) => {
           return {
               ...state,
               shapes: arrayOfShapes
+          }
+        case actionTypes.UPDATE_OFFSET:
+          let {id, startX, startY, offsetX, offsetY} = action;
+          return {
+              ...state,
+              selectedPos:{
+                startX: parseInt(startX),
+                startY:parseInt(startY),
+                offsetX:parseInt(offsetX),
+                offsetY:parseInt(offsetY),
+                dragElement:id
+              }
+          }
+        case actionTypes.CHANGE_POSITION:
+          let {selectedPos} = state;
+          let {dragElement} = selectedPos;
+          let shapesChange = state.shapes;
+          let dragElementIdx = shapesChange.findIndex((elem)=>elem.uniqueId==dragElement)
+          if(dragElementIdx>-1){
+              shapesChange[dragElementIdx].posX = parseInt(selectedPos.offsetX + action.clientX - selectedPos.startX)
+              shapesChange[dragElementIdx].posY = parseInt(selectedPos.offsetY + action.clientY - selectedPos.startY)}
+              return {
+              ...state,
+              shapes: shapesChange,
+              selectedPos: {
+                  ...selectedPos,
+                  offsetX: (shapesChange[dragElementIdx] && shapesChange[dragElementIdx].posX) || selectedPos.offsetX,
+                  offsetY: (shapesChange[dragElementIdx] && shapesChange[dragElementIdx].posY) || selectedPos.offsetY,
+            }
           }
     }
         

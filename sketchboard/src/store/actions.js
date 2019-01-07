@@ -10,7 +10,7 @@ export const UPDATE_SAVE_NAME = 'UPDATE_SAVE_NAME';
 export const SELECT = 'SELECT';
 export const DELETE = 'DELETE';
 export const CHANGE_COLOR = 'CHANGE_COLOR';
-export const CHANGE_POSITION = 'CHANGE_POSITION';
 export const UPDATE_OFFSET = 'UPDATE_OFFSET';
+export const CHANGE_POSITION = 'CHANGE_POSITION';
 export const RESIZE = 'RESIZE';
 
