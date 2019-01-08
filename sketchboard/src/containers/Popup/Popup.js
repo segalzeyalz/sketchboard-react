@@ -10,8 +10,8 @@ class Popup extends Component {
                            <div className={CSS.Inner_popup}>
                                 <h1 className={CSS.Title}>Save</h1>
                                 <input type="text" onChange={(event)=>this.props.updateName(event.target.value)}/>
-                               <button onClick={this.props.closePopup}>close me</button>
                                <button onClick={this.props.onSave}>Save</button>
+                               <button className={CSS.Button} onClick={this.props.closePopup}>close me</button>
                             </div>
                        </div>)
             }else if(this.props.showLoad){
@@ -21,7 +21,7 @@ class Popup extends Component {
                          <select onChange={(event)=>this.props.updateName(event.target.value)} select>}>
                          {this.props.loadOptions.map(elem => <option key={elem}>{elem}</option>)}</select>
                                <button onClick={this.props.onLoad}>Load</button>
-                        <button onClick={this.props.closePopup}>close me</button>
+                        <button className={CSS.Button} onClick={this.props.closePopup}>close me</button>
                      </div>
                 </div>)
             }
