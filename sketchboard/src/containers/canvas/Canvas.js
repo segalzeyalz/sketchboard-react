@@ -5,10 +5,9 @@ import { connect } from 'react-redux';
 class Canvas extends Component {
   render() {
       //Here is the canvas      
-     let { onSelect, onMouseDown, onMouseMove} = this.props
-     console.log(this.props.selectedPos)
+     let { onSelect, onMouseDown, onMouseMove, onMouseUp} = this.props
     return (
-      <div className={CSS.canvas}>
+      <div className={CSS.canvas} onMouseDown={(e) =>onMouseDown(e)} onMouseMove={(e)=>onMouseMove(e)} onMouseUp={()=>onMouseUp()}>
         {this.props.shapes.map(function(shape){
           var style = {
             "width":shape.width,
@@ -35,9 +34,6 @@ class Canvas extends Component {
           
           return <div 
                     onClick={(e)=>{onSelect(shape.uniqueId, e);}}
-                    onMouseDown={(e)=>{onMouseDown(shape.uniqueId, e)}}
-                    onMouseMove ={(e)=>{onMouseMove(shape.uniqueId,e)}}
-                    onMouseUp={(e)=>console.log("mouseLeave")}
                     key={shape.uniqueId} id={shape.uniqueId} style = {style}  
                   />
         })}
@@ -59,8 +55,8 @@ const mapStateToProps = state => {
 const mapDispatchToProps = dispatch => {
   return {
     onSelect: (id, event) =>dispatch({type: actionTypes.SELECT, id:id, ctrlCliked:event.ctrlKey}),
-    onMouseDown: (id, e)=>dispatch({type:actionTypes.UPDATE_OFFSET, id:id, startX:e.clientX, startY:e.clientY, offsetX:e.target.style.left, offsetY:e.target.style.top}),
-    onMouseMove: (id, e) =>dispatch({type:actionTypes.CHANGE_POSITION, clientX:e.clientX, clientY:e.clientY}),
+    onMouseDown: (e)=>dispatch({type:actionTypes.UPDATE_OFFSET, id:e.target.id, startX:e.clientX, startY:e.clientY, offsetX:e.target.style.left, offsetY:e.target.style.top}),
+    onMouseMove: (e) =>dispatch({type:actionTypes.CHANGE_POSITION, clientX:e.clientX, clientY:e.clientY}),
     onMouseUp: ()=>dispatch({type:actionTypes.STOP_CHANGE_POSITION})
   }
 };

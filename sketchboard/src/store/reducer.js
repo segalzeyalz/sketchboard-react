@@ -20,6 +20,7 @@ const initialState = {
     showLoad:false,
     savedName:'',
     color:'',
+    moveElem: false,
     selectedPos:{
         startX: 0,
         startY:0,
@@ -152,15 +153,20 @@ const reducer = (state = initialState, action) => {
           }
         case actionTypes.UPDATE_OFFSET:
           let {id, startX, startY, offsetX, offsetY} = action;
+          let shapesToChangePos= state.shapes
+          let selectedPosUpdate = state.selectedPos;
+           //if click on a shape
+           if(id){
+            selectedPosUpdate.dragElement = id
+            selectedPosUpdate.startX = parseFloat(startX);
+            selectedPosUpdate.startY = parseFloat(startY);
+            selectedPosUpdate.offsetX=parseFloat(offsetX);
+            selectedPosUpdate.offsetY=parseFloat(offsetY);
+           }
           return {
               ...state,
-              selectedPos:{
-                startX: parseFloat(startX),
-                startY:parseFloat(startY),
-                offsetX:parseFloat(offsetX),
-                offsetY:parseFloat(offsetY),
-                dragElement:id
-              }
+              selectedPos:{...selectedPosUpdate},
+              moveElem: id? true:false
           }
         case actionTypes.CHANGE_POSITION:
           let {selectedPos} = state;
@@ -169,26 +175,26 @@ const reducer = (state = initialState, action) => {
           let dragElementIdx = shapesChange.findIndex((elem)=>elem.uniqueId==dragElement)
           if(dragElementIdx>-1){
               shapesChange[dragElementIdx].posX = parseFloat(selectedPos.offsetX + action.clientX - selectedPos.startX)
-              shapesChange[dragElementIdx].posY = parseFloat(selectedPos.offsetY + action.clientY - selectedPos.startY)}
-              return {
-              ...state,
-              shapes: shapesChange,
-              selectedPos: {
-                  ...selectedPos,
-                  offsetX: (shapesChange[dragElementIdx] && shapesChange[dragElementIdx].posX) || selectedPos.offsetX,
-                  offsetY: (shapesChange[dragElementIdx] && shapesChange[dragElementIdx].posY) || selectedPos.offsetY,
+              shapesChange[dragElementIdx].posY = parseFloat(selectedPos.offsetY + action.clientY - selectedPos.startY)
             }
-          }
+            if(state.moveElem){
+                return {
+                ...state,
+                shapes: shapesChange,
+                selectedPos: {
+                    ...selectedPos,
+                    offsetX: (shapesChange[dragElementIdx] && shapesChange[dragElementIdx].posX) || selectedPos.offsetX,
+                    offsetY: (shapesChange[dragElementIdx] && shapesChange[dragElementIdx].posY) || selectedPos.offsetY,
+              }
+                }
+            }else{
+                return {...state}
+            }
         case actionTypes.STOP_CHANGE_POSITION:
           return {
               ...state,
-              selectedPos:{
-                startX: 0,
-                startY:0,
-                offsetX:0,
-                offsetY:0,
-                dragElement:''
-            }
+            moveElem: false,
+            selectedPos:{...state.selectedPos, dragElement:''}
           }
     }
         
