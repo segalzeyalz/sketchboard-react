@@ -14,7 +14,6 @@ class Popup extends Component {
                                     <input type="text" onChange={(event)=>this.props.updateName(event.target.value)}/>
                                 </div>
                                <button className={CSS.Button} onClick={this.props.onSave}>Save</button>
-                               <button className={CSS.Button} onClick={this.props.closePopup}>close me</button>
                             </div>
                        </div>)
             }else if(this.props.showLoad){
@@ -28,7 +27,7 @@ class Popup extends Component {
                         </div>
                         <div className={CSS.ButtonsContainer}>
                             <button className={CSS.Button} onClick={this.props.onLoad}>Load</button>
-                            <button className={CSS.Button} onClick={this.props.closePopup}>close me</button>
+                            
                         </div>
                      </div>
                 </div>)
