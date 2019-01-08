@@ -26,8 +26,10 @@ class Popup extends Component {
                             <select onChange={(event)=>this.props.updateName(event.target.value)}>}>
                             {this.props.loadOptions.map(elem => <option key={elem}>{elem}</option>)}</select>
                         </div>
-                        <button className={CSS.Button} onClick={this.props.onLoad}>Load</button>
-                        <button className={CSS.Button} onClick={this.props.closePopup}>close me</button>
+                        <div className={CSS.ButtonsContainer}>
+                            <button className={CSS.Button} onClick={this.props.onLoad}>Load</button>
+                            <button className={CSS.Button} onClick={this.props.closePopup}>close me</button>
+                        </div>
                      </div>
                 </div>)
             }
