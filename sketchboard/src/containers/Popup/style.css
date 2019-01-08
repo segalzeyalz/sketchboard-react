@@ -39,3 +39,10 @@
 	padding:16px 31px;
 	text-shadow:2px 0px 34px #283966;
 }
+:local(.Button:hover){
+	background:linear-gradient(to bottom, #476e9e 5%, #7892c2 100%);
+}
+:local(.Button:active){
+    position:relative;
+	top:1px;
+}
