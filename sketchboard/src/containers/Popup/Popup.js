@@ -9,9 +9,11 @@ class Popup extends Component {
                 return  (<div className={CSS.Popup}>
                            <div className={CSS.Inner_popup}>
                                 <h1 className={CSS.Title}>Save</h1>
-                                <label>Project Name: </label>
-                                <input type="text" onChange={(event)=>this.props.updateName(event.target.value)}/>
-                               <button onClick={this.props.onSave}>Save</button>
+                                <div className={CSS.FormContainer}>
+                                    <label>Project Name: </label>
+                                    <input type="text" onChange={(event)=>this.props.updateName(event.target.value)}/>
+                                </div>
+                               <button className={CSS.Button} onClick={this.props.onSave}>Save</button>
                                <button className={CSS.Button} onClick={this.props.closePopup}>close me</button>
                             </div>
                        </div>)
@@ -19,10 +21,12 @@ class Popup extends Component {
                 return  (<div className={CSS.Popup}>
                     <div className={CSS.Inner_popup}>
                          <h1 className={CSS.Title}>Load</h1>
-                         <label>Select Project: </label>
-                         <select onChange={(event)=>this.props.updateName(event.target.value)} select>}>
-                         {this.props.loadOptions.map(elem => <option key={elem}>{elem}</option>)}</select>
-                               <button onClick={this.props.onLoad}>Load</button>
+                         <div className={CSS.FormContainer}>
+                            <label>Select Project: </label>
+                            <select onChange={(event)=>this.props.updateName(event.target.value)}>}>
+                            {this.props.loadOptions.map(elem => <option key={elem}>{elem}</option>)}</select>
+                        </div>
+                        <button className={CSS.Button} onClick={this.props.onLoad}>Load</button>
                         <button className={CSS.Button} onClick={this.props.closePopup}>close me</button>
                      </div>
                 </div>)
