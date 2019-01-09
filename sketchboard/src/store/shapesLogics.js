@@ -2,8 +2,8 @@ const LOGICS = {
     randomizeShape: function(shapeName){
         let width = Math.random() * 250 + 50;
         let height = Math.random() * 250 + 50;
-        let posX = Math.round(Math.random() * 1270);
-        let posY = Math.round(Math.random() * 600);
+        let posX = Math.round(Math.random() * 1300);
+        let posY = Math.round(Math.random() * 450);
         if(shapeName==="Rectangle"){
           return {
             width:width,
