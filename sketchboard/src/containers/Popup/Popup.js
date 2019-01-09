@@ -8,17 +8,20 @@ class Popup extends Component {
             if(this.props.showSave){
                 return  (<div className={CSS.Popup}>
                            <div className={CSS.Inner_popup}>
+                               <font className={CSS.SimetricX} onClick={this.props.closePopup}>✖</font>
                                 <h1 className={CSS.Title}>Save</h1>
                                 <div className={CSS.FormContainer}>
                                     <label>Project Name: </label>
                                     <input type="text" onChange={(event)=>this.props.updateName(event.target.value)}/>
                                 </div>
-                               <button className={CSS.Button} onClick={this.props.onSave}>Save</button>
-                            </div>
+                                <div className={CSS.ButtonsContainer}>
+                                    <button className={CSS.Button} onClick={this.props.onSave}>Save</button></div>
+                                </div>
                        </div>)
             }else if(this.props.showLoad){
                 return  (<div className={CSS.Popup}>
                     <div className={CSS.Inner_popup}>
+                        <font className={CSS.SimetricX} onClick={this.props.closePopup}>✖</font>
                          <h1 className={CSS.Title}>Load</h1>
                          <div className={CSS.FormContainer}>
                             <label>Select Project: </label>
@@ -27,7 +30,6 @@ class Popup extends Component {
                         </div>
                         <div className={CSS.ButtonsContainer}>
                             <button className={CSS.Button} onClick={this.props.onLoad}>Load</button>
-                            
                         </div>
                      </div>
                 </div>)
