@@ -7,7 +7,12 @@ class Canvas extends Component {
       //Here is the canvas      
      let { onSelect, onMouseDown, onMouseMove, onMouseUp} = this.props
     return (
-      <div className={CSS.canvas} onMouseDown={(e) =>onMouseDown(e)} onMouseMove={(e)=>onMouseMove(e)} onMouseUp={()=>onMouseUp()}>
+      <div className={CSS.canvas}
+        onMouseDown={(e) =>onMouseDown(e)}
+        onMouseMove={(e)=>onMouseMove(e)}
+        onMouseUp={()=>onMouseUp()}
+        onKeyPress={()=>{this.props.onDelete()}}
+        >
         {this.props.shapes.map(function(shape){
           var style = {
             "width":shape.width,
@@ -57,7 +62,8 @@ const mapDispatchToProps = dispatch => {
     onSelect: (id, event) =>dispatch({type: actionTypes.SELECT, id:id, ctrlCliked:event.ctrlKey}),
     onMouseDown: (e)=>dispatch({type:actionTypes.UPDATE_OFFSET, id:e.target.id, startX:e.clientX, startY:e.clientY, offsetX:e.target.style.left, offsetY:e.target.style.top}),
     onMouseMove: (e) =>dispatch({type:actionTypes.CHANGE_POSITION, clientX:e.clientX, clientY:e.clientY}),
-    onMouseUp: ()=>dispatch({type:actionTypes.STOP_CHANGE_POSITION})
+    onMouseUp: ()=>dispatch({type:actionTypes.STOP_CHANGE_POSITION}),
+    onDelete: () => dispatch({type:actionTypes.DELETE}),
   }
 };
 export default connect(mapStateToProps, mapDispatchToProps)(Canvas);
