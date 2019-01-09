@@ -94,19 +94,22 @@ const reducer = (state = initialState, action) => {
                 savedName:action.chosenName
             }
         case actionTypes.DELETE:
-            console.log(action.typeEvent==="click" || action.delClicked)
-            let shapesToRemove = state.selectedShapes;
-            let shapesArr = [...state.shapes];
-            // Delte all the shapes to remove
-            for(var i=0; i<shapesToRemove.length; i++){
-                let idxSelected = shapesArr.findIndex((elem)=>elem.uniqueId==shapesToRemove[i])
-                shapesArr.splice(idxSelected,1)
+        //triggered by 'del' key of click
+            if(action.typeEvent==="click" || action.delClicked){
+                let shapesToRemove = state.selectedShapes;
+                let shapesArr = [...state.shapes];
+                // Delte all the shapes to remove
+                for(var i=0; i<shapesToRemove.length; i++){
+                    let idxSelected = shapesArr.findIndex((elem)=>elem.uniqueId==shapesToRemove[i])
+                    shapesArr.splice(idxSelected,1)
+                }
+                  return {
+                      ...state,
+                      shapes: shapesArr,
+                      selectedShapes: []
+                  }
             }
-              return {
-                  ...state,
-                  shapes: shapesArr,
-                  selectedShapes: []
-              }
+            return {...state}          
         case actionTypes.SHOW_SAVE:
           return {
               ...state,
