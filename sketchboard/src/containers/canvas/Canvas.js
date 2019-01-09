@@ -3,6 +3,10 @@ import * as actionTypes from './../../store/actions';
 import CSS from './style.css'
 import { connect } from 'react-redux';
 class Canvas extends Component {
+  componentDidMount() {
+    //Bind window keydown with component keydown in order to enable delete
+    window.addEventListener("keydown", this.props.onDelete);
+  }
   render() {
       //Here is the canvas      
      let { onSelect, onMouseDown, onMouseMove, onMouseUp} = this.props
@@ -11,7 +15,6 @@ class Canvas extends Component {
         onMouseDown={(e) =>onMouseDown(e)}
         onMouseMove={(e)=>onMouseMove(e)}
         onMouseUp={()=>onMouseUp()}
-        onKeyPress={()=>{this.props.onDelete()}}
         >
         {this.props.shapes.map(function(shape){
           var style = {
