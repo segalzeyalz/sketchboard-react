@@ -8,7 +8,9 @@ class Popup extends Component {
             if(this.props.showSave){
                 return  (<div className={CSS.Popup}>
                            <div className={CSS.Inner_popup}>
+                            <div className={CSS.XContiner}>
                                <font className={CSS.SimetricX} onClick={this.props.closePopup}>✖</font>
+                            </div>
                                 <h1 className={CSS.Title}>Save</h1>
                                 <div className={CSS.FormContainer}>
                                     <label>Project Name: </label>
@@ -21,7 +23,9 @@ class Popup extends Component {
             }else if(this.props.showLoad){
                 return  (<div className={CSS.Popup}>
                     <div className={CSS.Inner_popup}>
-                        <font className={CSS.SimetricX} onClick={this.props.closePopup}>✖</font>
+                        <div className={CSS.XContiner}>
+                                <font className={CSS.SimetricX} onClick={this.props.closePopup}>✖</font>
+                        </div>
                          <h1 className={CSS.Title}>Load</h1>
                          <div className={CSS.FormContainer}>
                             <label>Select Project: </label>
