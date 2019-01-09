@@ -94,6 +94,7 @@ const reducer = (state = initialState, action) => {
                 savedName:action.chosenName
             }
         case actionTypes.DELETE:
+            console.log(action.typeEvent==="click" || action.delClicked)
             let shapesToRemove = state.selectedShapes;
             let shapesArr = [...state.shapes];
             // Delte all the shapes to remove

@@ -34,7 +34,7 @@ const mapDispatchToProps = dispatch => {
     openSavePopup: () => dispatch({type:actionTypes.SHOW_SAVE}),
     openLoadPopup: () => dispatch({type:actionTypes.SHOW_LOAD}),
     onLoad: () =>dispatch({type:actionTypes.LOAD, chosenName:"b"}),
-    onDelete: () => dispatch({type:actionTypes.DELETE}),
+    onDelete: (e) => dispatch({type:actionTypes.DELETE, typeEvent:"click"}),
     onColorChange: (color)=>dispatch({type:actionTypes.CHANGE_COLOR, color:color})
   }
 };

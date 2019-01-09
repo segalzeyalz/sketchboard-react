@@ -66,7 +66,7 @@ const mapDispatchToProps = dispatch => {
     onMouseDown: (e)=>dispatch({type:actionTypes.UPDATE_OFFSET, id:e.target.id, startX:e.clientX, startY:e.clientY, offsetX:e.target.style.left, offsetY:e.target.style.top}),
     onMouseMove: (e) =>dispatch({type:actionTypes.CHANGE_POSITION, clientX:e.clientX, clientY:e.clientY}),
     onMouseUp: ()=>dispatch({type:actionTypes.STOP_CHANGE_POSITION}),
-    onDelete: () => dispatch({type:actionTypes.DELETE}),
+    onDelete: (e) => dispatch({type:actionTypes.DELETE, delClicked:e.code==="Delete"}),
   }
 };
 export default connect(mapStateToProps, mapDispatchToProps)(Canvas);
