@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import CSS from './style.css';
+import SimetricX from '../../components/SimetricX'
 import * as actionTypes from './../../store/actions';
 import { connect } from 'react-redux';
 
@@ -8,9 +9,7 @@ class Popup extends Component {
             if(this.props.showSave){
                 return  (<div className={CSS.Popup}>
                            <div className={CSS.Inner_popup}>
-                            <div className={CSS.XContiner}>
-                               <font className={CSS.SimetricX} onClick={this.props.closePopup}>✖</font>
-                            </div>
+                                <SimetricX closePopup={this.props.closePopup}/>
                                 <h1 className={CSS.Title}>Save</h1>
                                 <div className={CSS.FormContainer}>
                                     <label>Project Name: </label>
@@ -23,9 +22,7 @@ class Popup extends Component {
             }else if(this.props.showLoad){
                 return  (<div className={CSS.Popup}>
                     <div className={CSS.Inner_popup}>
-                        <div className={CSS.XContiner}>
-                                <font className={CSS.SimetricX} onClick={this.props.closePopup}>✖</font>
-                        </div>
+                       <SimetricX closePopup={this.props.closePopup}/>
                          <h1 className={CSS.Title}>Load</h1>
                          <div className={CSS.FormContainer}>
                             <label>Select Project: </label>

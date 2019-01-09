@@ -59,12 +59,3 @@
     align-items: center;
     text-align: center;
 }
-:local(.XContiner){
-    display: flex;
-    justify-content: flex-end;
-}
-:local(.SimetricX) {
-    color: #AFAFB0;
-    cursor: pointer;
-    margin-right: 5px;
-}
