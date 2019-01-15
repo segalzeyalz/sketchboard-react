@@ -3,7 +3,7 @@ import * as actionTypes from './../../store/actions';
 import CSS from './style.css'
 import { connect } from 'react-redux';
 class Canvas extends Component {
-  componentDidMount() {
+  componentWillMount() {
     //Bind window keydown with component keydown in order to enable delete
     window.addEventListener("keydown", this.props.onDelete);
   }
